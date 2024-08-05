@@ -1,0 +1,21 @@
+//Time Complexity- O(n) Space Complexity-O(n)
+
+int MaxSubsetSumNoAdjacent(int[] array) 
+  {
+      if (array.Length == 0)
+      {
+          return 0;
+      }
+      else if (array.Length == 1)
+      {
+          return array[0];
+      }
+      int[] maximumSubSums = (int[])array.Clone();
+      maximumSubSums[1] =Math.Max(array[0], array[1]);
+      for(int idx=2; idx<array.Length; idx++) 
+      {
+          maximumSubSums[idx] = Math.Max(maximumSubSums[idx-1], maximumSubSums[idx-2] + maximumSubSums[idx]);
+      }
+  
+      return maximumSubSums[array.Length-1];
+  }
