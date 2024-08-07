@@ -1,4 +1,4 @@
-//
+//Time Complexity- O(nd)-where d is the number of denomeantions---- Space Complexity-O(n)
 
 int NumberOfWaysToMakeChange(int n, int[] denoms) 
   {
