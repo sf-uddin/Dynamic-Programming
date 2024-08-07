@@ -1,0 +1,18 @@
+//
+
+int NumberOfWaysToMakeChange(int n, int[] denoms) 
+  {
+   int[] methods = new int[n+1];
+      methods[0]=1;
+      foreach(int denom in denoms)
+      {
+          for(int amount =1; amount<n+1; amount++)
+          {
+              if(denom<=amount)
+              {
+                  methods[amount] += methods[amount -denom];
+              }
+          }
+      }
+    return methods[n];
+  }
