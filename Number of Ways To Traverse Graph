@@ -1,0 +1,22 @@
+ // Time Complexity--- O(n + m) Space Complexity --- O(1) - where n is the width of the graph and m is the height
+int NumberOfWaysToTraverseGraph(int width, int height) 
+{
+        int xDistanceToCorner = width - 1;
+        int yDistanceToCorner = height - 1;
+
+        // The number of permutations of right and down movements is the number of ways to reach the bottom right corner.
+        int numerator = factorial(xDistanceToCorner + yDistanceToCorner);
+        int denominator = factorial(xDistanceToCorner) * factorial(yDistanceToCorner);
+        return numerator / denominator;
+    }
+
+    public int factorial(int num) 
+{
+        int result = 1;
+
+        for (int n = 2; n < num + 1; n++) {
+            result *= n;
+        }
+
+        return result;
+    }
