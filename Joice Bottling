@@ -1,0 +1,26 @@
+// O(n^2) time Complexity--- O(n) space Complexity- where n is the length of prices
+    public List<int> JuiceBottling(int[] prices) {
+        int numSizes = prices.Length;
+        int[] maxProfit = new int[numSizes];
+        int[] dividingPoints = new int[numSizes];
+
+        for (int size = 0; size < numSizes; size++) {
+            for (int dividingPoint = 0; dividingPoint <= size; dividingPoint++) {
+                int possibleProfit = maxProfit[size - dividingPoint] + prices[dividingPoint];
+
+                if (possibleProfit > maxProfit[size]) {
+                    maxProfit[size] = possibleProfit;
+                    dividingPoints[size] = dividingPoint;
+                }
+            }
+        }
+
+        List<int> solution = new List<int>();
+        int currentDividingPoint = numSizes - 1;
+        while (currentDividingPoint > 0) {
+            solution.Add(dividingPoints[currentDividingPoint]);
+            currentDividingPoint -= dividingPoints[currentDividingPoint];
+        }
+
+        return solution;
+    }
